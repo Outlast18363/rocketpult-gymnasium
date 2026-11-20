@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#263238">
+  <meta name="description" content="A playable Rust recreation of Rocketpult Classic. Thrust, swing, release, and stick the landing.">
+  <title>ROCKETPULT Classic · Rust</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #181d22; }
+    #glcanvas { display: block; width: 100%; height: 100%; outline: none; image-rendering: pixelated; }
+    #loading { position: fixed; inset: 0; display: grid; place-content: center; color: #263238;
+      background: linear-gradient(#ddbee2, #fcf5cc); font: bold 16px monospace; letter-spacing: .13em; text-align: center; }
+    #loading strong { font-size: clamp(26px, 6vw, 62px); letter-spacing: .06em; }
+    #loading p { margin-top: 26px; }
+  </style>
+</head>
+<body>
+  <canvas id="glcanvas" tabindex="0" aria-label="Rocketpult Classic game. Up to thrust, left and right to rotate, space to release or deploy legs, Z for slow motion, H for help."></canvas>
+  <div id="loading"><strong>ROCKETPULT</strong><p id="load-status">PREPARING FOR LAUNCH...</p></div>
+  <script src="gl.js"></script>
+  <script src="audio.js"></script>
+  <script src="storage.js"></script>
+  <script>
+    const loading = document.getElementById('loading');
+    // The first animation callback means the Rust renderer has started.
+    const scheduleFrame = window.requestAnimationFrame.bind(window);
+    window.requestAnimationFrame = function (callback) {
+      return scheduleFrame(function (time) {
+        loading.style.display = 'none';
+        callback(time);
+      });
+    };
+    window.addEventListener('keydown', event => {
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space', 'Backspace'].includes(event.code)) event.preventDefault();
+    });
+    document.getElementById('glcanvas').addEventListener('pointerdown', () => document.getElementById('glcanvas').focus());
+    window.addEventListener('unhandledrejection', () => {
+      loading.style.display = 'grid';
+      document.getElementById('load-status').textContent = 'LAUNCH FAILED. PLEASE RELOAD.';
+    });
+    load('rocketpult.wasm');
+  </script>
+</body>
+</html>

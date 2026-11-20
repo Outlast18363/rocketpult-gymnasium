@@ -1,0 +1,43 @@
+[build-system]
+requires = ["maturin>=1.9,<2"]
+build-backend = "maturin"
+
+[project]
+name = "rocketpult-gymnasium"
+version = "0.1.0"
+description = "A headless Rust Rocketpult environment for Gymnasium"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["gymnasium>=1.2,<2", "numpy>=1.26,<3"]
+license = "MIT"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Rust",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+train = ["stable-baselines3==2.7.1"]
+
+[project.urls]
+Repository = "https://github.com/Outlast18363/rocketpult-gymnasium"
+Documentation = "https://github.com/Outlast18363/rocketpult-gymnasium/blob/main/docs/environment.md"
+Issues = "https://github.com/Outlast18363/rocketpult-gymnasium/issues"
+
+[tool.maturin]
+python-source = "python"
+module-name = "rocketpult_gymnasium._native"
+features = ["python"]
+bindings = "pyo3"
+include = [
+  { path = ".cargo/config.toml", format = "sdist" },
+  { path = "vendor/box2d-rs/LICENSE", format = "wheel" },
+  "THIRD_PARTY.md",
+]
+exclude = ["dist/**", "artifacts/**", ".venv/**", "target/**", "**/__pycache__/**"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -m 'not training'"
+markers = ["training: optional optimizer/checkpoint integration; runs only when explicitly selected"]

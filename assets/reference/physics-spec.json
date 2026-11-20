@@ -1,0 +1,536 @@
+{
+  "source": "https://html-classic.itch.zone/html/565140/data.js",
+  "runtime": "https://html-classic.itch.zone/html/565140/c2runtime.js",
+  "world_scale": 0.02,
+  "gravity": 8,
+  "reference_step": 0.016666666666666666,
+  "velocity_iterations": 8,
+  "position_iterations": 3,
+  "thrust_attached": 128,
+  "thrust_free": 32,
+  "torque_degrees_converted_to_radians": 128,
+  "fuel_seconds": 30,
+  "thrust_and_slow_each_fuel_seconds_per_real_second": 1,
+  "air_damping": {
+    "linear": 0,
+    "angular": 0
+  },
+  "water_damping": {
+    "linear": 1,
+    "angular": 1
+  },
+  "slow_target": 0.0625,
+  "slow_interpolation_per_60hz_tick": 0.0625,
+  "free_force_and_torque_inverse_timescale": true,
+  "friction": 0.5,
+  "restitution": 0.2,
+  "density": 1,
+  "bullet": false,
+  "collision_polygons": {
+    "BronzePlatformSprite": [
+      {
+        "animation": "Animation 1",
+        "frames": [
+          {
+            "size": [
+              128,
+              16
+            ],
+            "origin": [
+              0.5,
+              0.5
+            ],
+            "points": [
+              -0.5,
+              -0.5,
+              0.5,
+              -0.5,
+              0.5,
+              0.25,
+              0.46875,
+              0.5,
+              -0.46875,
+              0.5,
+              -0.5,
+              0.25
+            ]
+          }
+        ]
+      }
+    ],
+    "CatapultBodySprite": [
+      {
+        "animation": "Animation 1",
+        "frames": [
+          {
+            "size": [
+              120,
+              64
+            ],
+            "origin": [
+              0.5,
+              0.5
+            ],
+            "points": [
+              0,
+              -0.5,
+              0.5,
+              0.4375,
+              0.4666666666666667,
+              0.5,
+              -0.4666666666666667,
+              0.5,
+              -0.5,
+              0.4375
+            ]
+          }
+        ]
+      }
+    ],
+    "CatapultArmSprite": [
+      {
+        "animation": "Animation 1",
+        "frames": [
+          {
+            "size": [
+              52,
+              8
+            ],
+            "origin": [
+              0.07692307692307693,
+              0.5
+            ],
+            "points": [
+              0,
+              -0.5,
+              0.8461538461538463,
+              -0.5,
+              0.9230769230769231,
+              0,
+              0.8461538461538463,
+              0.5,
+              0,
+              0.5,
+              -0.07692307692307693,
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "LaunchpadSprite": [
+      {
+        "animation": "Animation 1",
+        "frames": [
+          {
+            "size": [
+              320,
+              174
+            ],
+            "origin": [
+              0.5,
+              0.5
+            ],
+            "points": [
+              -0.5,
+              -0.5,
+              0.48750000000000004,
+              -0.5,
+              0.5,
+              -0.4770114942528736,
+              0.5,
+              0.5,
+              -0.5,
+              0.5
+            ]
+          }
+        ]
+      }
+    ],
+    "RocketSprite": [
+      {
+        "animation": "Flying",
+        "frames": [
+          {
+            "size": [
+              32,
+              32
+            ],
+            "origin": [
+              0.625,
+              0.5
+            ],
+            "points": [
+              -0.5,
+              -0.09375,
+              0.375,
+              -0.09375,
+              0.375,
+              0.09375,
+              -0.5,
+              0.09375
+            ]
+          }
+        ]
+      },
+      {
+        "animation": "RetractLegs",
+        "frames": [
+          {
+            "size": [
+              32,
+              32
+            ],
+            "origin": [
+              0.625,
+              0.5
+            ],
+            "points": [
+              -0.5,
+              -0.09375,
+              -0.375,
+              -0.09375,
+              -0.375,
+              -0.4375,
+              0.375,
+              -0.09375,
+              0.375,
+              0.09375,
+              -0.375,
+              0.4375,
+              -0.375,
+              0.09375,
+              -0.5,
+              0.09375
+            ]
+          },
+          {
+            "size": [
+              32,
+              32
+            ],
+            "origin": [
+              0.625,
+              0.5
+            ],
+            "points": [
+              -0.5,
+              -0.09375,
+              -0.375,
+              -0.09375,
+              -0.09375,
+              -0.375,
+              0.375,
+              -0.09375,
+              0.375,
+              0.09375,
+              -0.09375,
+              0.375,
+              -0.375,
+              0.09375,
+              -0.5,
+              0.09375
+            ]
+          }
+        ]
+      },
+      {
+        "animation": "DeployLegs",
+        "frames": [
+          {
+            "size": [
+              32,
+              32
+            ],
+            "origin": [
+              0.625,
+              0.5
+            ],
+            "points": [
+              -0.5,
+              -0.09375,
+              -0.375,
+              -0.09375,
+              -0.09375,
+              -0.375,
+              0.375,
+              -0.09375,
+              0.375,
+              0.09375,
+              -0.09375,
+              0.375,
+              -0.375,
+              0.09375,
+              -0.5,
+              0.09375
+            ]
+          },
+          {
+            "size": [
+              32,
+              32
+            ],
+            "origin": [
+              0.625,
+              0.5
+            ],
+            "points": [
+              -0.5,
+              -0.09375,
+              -0.375,
+              -0.09375,
+              -0.375,
+              -0.4375,
+              0.375,
+              -0.09375,
+              0.375,
+              0.09375,
+              -0.375,
+              0.4375,
+              -0.375,
+              0.09375,
+              -0.5,
+              0.09375
+            ]
+          }
+        ]
+      },
+      {
+        "animation": "Landing",
+        "frames": [
+          {
+            "size": [
+              32,
+              32
+            ],
+            "origin": [
+              0.625,
+              0.5
+            ],
+            "points": [
+              -0.5,
+              -0.09375,
+              -0.375,
+              -0.09375,
+              -0.625,
+              -0.375,
+              0.375,
+              -0.09375,
+              0.375,
+              0.09375,
+              -0.625,
+              0.375,
+              -0.375,
+              0.09375,
+              -0.5,
+              0.09375
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "particle_properties": {
+    "RocketDarkSmokeParticles": [
+      0,
+      15,
+      0,
+      0,
+      64,
+      100,
+      -8,
+      0,
+      0,
+      0,
+      64,
+      0,
+      0,
+      0,
+      0,
+      128,
+      0,
+      1,
+      16
+    ],
+    "RocketLightSmokeParticles": [
+      0,
+      15,
+      0,
+      0,
+      64,
+      100,
+      -8,
+      0,
+      0,
+      0,
+      64,
+      0,
+      0,
+      0,
+      0,
+      128,
+      0,
+      1,
+      16
+    ],
+    "WaterSplashParticles": [
+      32,
+      45,
+      1,
+      512,
+      64,
+      100,
+      -32,
+      0,
+      0,
+      256,
+      64,
+      0,
+      -128,
+      1024,
+      0,
+      0,
+      0,
+      1,
+      8
+    ],
+    "ExplosionParticles3": [
+      128,
+      360,
+      1,
+      256,
+      256,
+      100,
+      -128,
+      0,
+      0,
+      256,
+      256,
+      0,
+      -128,
+      -512,
+      0,
+      0,
+      0,
+      1,
+      4
+    ],
+    "ExplosionParticles2": [
+      128,
+      360,
+      1,
+      256,
+      128,
+      100,
+      -64,
+      0,
+      0,
+      256,
+      128,
+      0,
+      -256,
+      -512,
+      0,
+      0,
+      0,
+      1,
+      4
+    ],
+    "ExplosionParticles1": [
+      96,
+      360,
+      1,
+      256,
+      128,
+      100,
+      -128,
+      0,
+      0,
+      256,
+      128,
+      0,
+      -256,
+      -512,
+      0,
+      0,
+      0,
+      1,
+      4
+    ],
+    "ExplosionParticles0": [
+      64,
+      360,
+      1,
+      256,
+      64,
+      100,
+      -128,
+      0,
+      0,
+      256,
+      64,
+      0,
+      -256,
+      -512,
+      0,
+      0,
+      0,
+      1,
+      4
+    ],
+    "BestScoreParticles": [
+      256,
+      0,
+      1,
+      1024,
+      64,
+      100,
+      -64,
+      0,
+      64,
+      4096,
+      64,
+      0,
+      -2048,
+      0,
+      0,
+      800,
+      0,
+      1,
+      4
+    ]
+  },
+  "popup_classes": {
+    "small": {
+      "minimum": 0,
+      "sprite_scale": 4,
+      "start_scale": 6,
+      "seconds": 1,
+      "text_fade_in": 0.125,
+      "text_fade_out": 0.125
+    },
+    "medium": {
+      "minimum": 100,
+      "sprite_scale": 4,
+      "start_scale": 6,
+      "seconds": 2,
+      "text_fade_in": 0.125,
+      "text_fade_out": 0.125
+    },
+    "large": {
+      "minimum": 1000,
+      "sprite_scale": 4,
+      "start_scale": 6,
+      "seconds": 4,
+      "text_fade_in": 0.125,
+      "text_fade_out": 0.125
+    }
+  },
+  "popup_rotation_range_degrees": [
+    -5,
+    5
+  ],
+  "physics_step_per_display_frame": 0.016666666666666666,
+  "fuel_and_particles_use_real_dt": true,
+  "native_macos_uses_screen_maximum_frames_per_second": true
+}

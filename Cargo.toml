@@ -1,0 +1,40 @@
+[package]
+name = "rocketpult-gymnasium"
+version = "0.1.0"
+edition = "2021"
+description = "Headless Rust Rocketpult simulation with a Gymnasium Python interface"
+license = "MIT"
+rust-version = "1.85"
+repository = "https://github.com/Outlast18363/rocketpult-gymnasium"
+
+[lib]
+name = "_native"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "rocketpult"
+path = "src/main.rs"
+required-features = ["play"]
+
+[features]
+default = []
+python = ["dep:pyo3", "pyo3/extension-module"]
+play = ["dep:macroquad", "dep:objc"]
+
+[dependencies]
+glam = "=0.27.0"
+macroquad = { version = "=0.4.14", features = ["audio"], optional = true }
+box2d-rs = { version = "=0.0.4", path = "vendor/box2d-rs" }
+pyo3 = { version = "=0.30.1", optional = true }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc = { package = "objc-rs", version = "=0.2.8", optional = true }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev.package.'*']
+opt-level = 3

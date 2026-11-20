@@ -1,0 +1,4 @@
+[target.wasm32-unknown-unknown]
+# Macroquad's browser support supplies these external functions at runtime.
+# Newer Rust/LLVM releases require this explicit linker setting.
+rustflags = ["-C", "link-arg=--allow-undefined"]
